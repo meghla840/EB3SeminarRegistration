@@ -17,11 +17,16 @@
 
   *{box-sizing:border-box;}
 
+  html, body{margin:0;padding:0;width:100%;min-width:100%;overflow-x:hidden;}
+
   #eb3-root{
     background:linear-gradient(180deg, #FAFCFF 0%, #ffffff 220px);
     color:var(--ink);
     font-family:'Inter',system-ui,sans-serif;
-    min-height:100%;
+    min-height:100vh;
+    min-height:100dvh;
+    width:100%;
+    margin:0;
     position:relative;
   }
 
@@ -57,8 +62,8 @@
 
   /* ---------- hero ---------- */
   #eb3-root .hero{
-    max-width:640px;
-    margin:0 auto;
+    width:100%;
+    margin:0;
     text-align:center;
     padding:40px 20px 8px;
   }
@@ -95,8 +100,8 @@
 
   /* ---------- venue strip ---------- */
   #eb3-root .venue{
-    max-width:560px;
-    margin:26px auto 0;
+    width:100%;
+    margin:26px 0 0;
     padding:0 16px;
   }
   #eb3-root .venue-card{
@@ -284,7 +289,7 @@
 
 
   /* ---------- document card ---------- */
-  #eb3-root .wrap{max-width:560px;margin:0 auto;padding:26px 16px 56px;}
+  #eb3-root .wrap{width:100%;margin:0;padding:26px 16px 56px;}
 
   #eb3-root .card{
     background:var(--white);
@@ -483,7 +488,26 @@
     #eb3-root .quick-btn{font-size:11px;padding:9px 6px;}
 
     #eb3-root .submit-btn{font-size:13.5px;padding:13px;}
-    #eb3-root .footnote{font-size:10.5px;}
+    #eb3-root .footnote{font-size:10.5px;padding:0 16px;}
+
+    /* edge-to-edge: every section takes the exact same full width as .site-header,
+       with one small consistent inner padding — no outer margin/gap anywhere */
+    #eb3-root .site-header{padding-left:0;padding-right:0;margin:0;}
+    #eb3-root .site-header-inner{max-width:none;margin-left:0;margin-right:0;padding:0 12px;}
+
+    #eb3-root .hero{max-width:none;margin-left:0;margin-right:0;padding-left:12px;padding-right:12px;}
+    #eb3-root .hero p{max-width:none;}
+
+    #eb3-root .venue{max-width:none;margin-left:0;margin-right:0;padding-left:0;padding-right:0;}
+    #eb3-root .venue-card{border-radius:0;padding-left:12px;padding-right:12px;}
+    #eb3-root .payment-card{border-radius:0;border-left:none;border-right:none;padding-left:12px;padding-right:12px;}
+
+    #eb3-root .wrap{max-width:none;margin-left:0;margin-right:0;padding-left:0;padding-right:0;}
+    #eb3-root .card{border-radius:0;border-left:none;border-right:none;margin-left:0;margin-right:0;}
+    #eb3-root .card-top{padding-left:12px;padding-right:12px;}
+    #eb3-root form{padding-left:12px;padding-right:12px;}
+    #eb3-root .success{padding-left:12px;padding-right:12px;}
+    #eb3-root .footnote{padding-left:12px;padding-right:12px;}
   }
 
   /* ---------- entrance animations ---------- */
