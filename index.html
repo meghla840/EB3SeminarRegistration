@@ -94,7 +94,7 @@
   html, body{margin:0;padding:0;width:100%;min-width:100%;overflow-x:hidden;}
 
   #eb3-root{
-    background:linear-gradient(180deg, #FAFCFF 0%, #ffffff 220px);
+    background:linear-gradient(180deg, #F5EFE3 0%, #FBF8F1 220px);
     color:var(--ink);
     font-family:'Inter','Noto Sans Bengali',system-ui,sans-serif;
     min-height:100vh;
@@ -177,15 +177,22 @@
   }
   #eb3-root .hero-banner-caption{
     position:absolute;
-    left:0; right:0; bottom:14px;
-    text-align:center;
-    color:#fff;
+    left:50%;
+    bottom:14px;
+    transform:translateX(-50%);
+    display:inline-block;
+    white-space:nowrap;
+    color:var(--navy);
+    background:rgba(255,255,255,0.94);
+    padding:6px 16px;
+    border-radius:999px;
+    box-shadow:0 4px 12px rgba(16,29,61,0.18);
     font-family:'Inter','Noto Sans Bengali',sans-serif;
     font-size:13px;
-    font-weight:600;
+    font-weight:800;
     letter-spacing:.05em;
     text-transform:uppercase;
-    text-shadow:0 2px 8px rgba(0,0,0,0.45);
+    text-shadow:none;
   }
   #eb3-root .hero-pill{
     display:inline-block;
@@ -212,6 +219,7 @@
   }
   #eb3-root .hero p{
     font-size:17px;
+    font-weight:600;
     color:var(--ink-soft);
     line-height:1.75;
     margin:0 auto;
@@ -233,25 +241,6 @@
     gap:16px;
     align-items:center;
     flex-wrap:wrap;
-    opacity:0;
-    transform:translateY(18px);
-    animation:eb3VenueIn .7s cubic-bezier(.22,1,.36,1) forwards;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  #eb3-root .venue-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 16px 34px -14px rgba(16,29,61,0.45);
-  }
-  @keyframes eb3VenueIn{
-    0%{opacity:0;transform:translateY(18px) scale(.98);}
-    100%{opacity:1;transform:translateY(0) scale(1);}
-  }
-  #eb3-root .venue-icon{
-    animation:eb3IconPulse 2.6s ease-in-out infinite;
-  }
-  @keyframes eb3IconPulse{
-    0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0.18);}
-    50%{transform:scale(1.08);box-shadow:0 0 0 6px rgba(255,255,255,0);}
   }
   #eb3-root .venue-item{
     display:flex;
@@ -346,6 +335,7 @@
     border:1.5px solid var(--accent-100);
     border-radius:16px;
     padding:20px 22px 18px;
+    position:relative;
   }
   #eb3-root .payment-head{
     display:flex;justify-content:space-between;align-items:flex-start;
@@ -357,8 +347,47 @@
     font-size:25px;
     color:var(--navy);
     margin:0;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
   }
-  #eb3-root .payment-amount span{
+  #eb3-root .payment-amount-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:2px;
+  }
+  #eb3-root .fee-cloud-badge{
+    position:relative;
+    width:78px;
+    flex:0 0 auto;
+  }
+  #eb3-root .fee-cloud-badge svg{width:100%;height:auto;display:block;}
+  #eb3-root .fee-cloud-text{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    font-family:'Poppins','Noto Sans Bengali',sans-serif;
+    font-weight:800;
+    line-height:1.1;
+    padding-top:3px;
+  }
+  #eb3-root .fee-cloud-old{
+    font-size:11.5px;
+    color:#98A2B3;
+    text-decoration:line-through;
+    text-decoration-color:#D92D20;
+    text-decoration-thickness:2px;
+  }
+  #eb3-root .fee-cloud-new{
+    font-size:16px;
+    color:var(--accent-600);
+  }
+  #eb3-root .payment-amount span.price-suffix{
     font-family:'Inter','Noto Sans Bengali',sans-serif;
     font-weight:400;
     font-size:14.5px;
@@ -473,7 +502,7 @@
   #eb3-root .wrap{width:100%;margin:0;padding:26px 16px 56px;}
 
   #eb3-root .card{
-    background:var(--white);
+    background:#FBF8F1;
     border-radius:20px;
     border:1px solid var(--line-strong);
     box-shadow:0 30px 70px -20px rgba(16,29,61,0.18);
@@ -490,7 +519,7 @@
     flex-wrap:wrap;
   }
   #eb3-root .card-top .doc-no{
-    font-family:'Inter','Noto Sans Bengali',monospace;
+    font-family:'Inter','Noto Sans Bengali',sans-serif;
     font-size:13px;
     font-weight:600;
     letter-spacing:.03em;
@@ -511,6 +540,23 @@
     border-bottom:1px solid var(--accent-100);
   }
   #eb3-root .section-label-spaced{margin-top:8px;}
+  #eb3-root .lock-hint{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter','Noto Sans Bengali',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--accent-600);
+    background:var(--accent-50);
+    border:1px dashed var(--accent-100);
+    border-radius:12px;
+    padding:12px 14px;
+    margin:4px 0 8px;
+  }
+  #eb3-root #restOfForm{
+    animation:eb3FadeUp .5s cubic-bezier(.22,.9,.35,1) both;
+  }
 
   #eb3-root .field{
     padding:17px 0;
@@ -697,6 +743,8 @@
     #eb3-root .card-top{padding:14px 18px;}
     #eb3-root .venue-card{flex-direction:column;align-items:stretch;}
     #eb3-root .venue-divider{display:none;}
+    #eb3-root .venue-item{flex-direction:column;align-items:center;text-align:center;}
+    #eb3-root .venue-value small{display:block;text-align:center;}
 
     #eb3-root .hero{padding:30px 16px 6px;}
     #eb3-root .hero-banner-img{max-height:180px;}
@@ -929,7 +977,7 @@
   </div>
 
   <div class="venue">
-    <p class="venue-pickup-line">💚 আপনার সঠিক সিদ্ধান্তই, আপনার এবং আপনার আগামী প্রজন্মের উজ্জ্বল ভবিষ্যৎ</p>
+    <p class="venue-pickup-line">💚 আপনার সঠিক সিদ্ধান্তই আপনার ও আপনার পরিবারের উজ্জ্বল ভবিষ্যতের চাবিকাঠি।</p>
     <div class="venue-card">
       <div class="venue-item">
         <div class="venue-icon">
@@ -937,7 +985,7 @@
         </div>
         <div>
           <p class="venue-label">Venue</p>
-          <p class="venue-value">Noa Convention Hall
+          <p class="venue-value">Noakhali Convention Hall
             <small>GCCE, Majdai, Noakhali</small>
           </p>
         </div>
@@ -962,7 +1010,19 @@
       <div class="payment-head">
         <div>
           <p class="venue-label" style="color:var(--accent-600);">Registration Fee</p>
-          <p class="payment-amount">৳ 300 <span>/ person</span></p>
+          <div class="payment-amount-row">
+            <div class="fee-cloud-badge" aria-hidden="true">
+              <svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22,58 Q8,58 8,46 Q8,35 19,33 Q18,21 32,18 Q38,7 52,10 Q65,4 76,15 Q90,14 92,28 Q100,31 97,44 Q99,56 86,58 Q84,68 71,68 L29,68 Q22,68 22,58 Z"
+                  fill="#FFFDF7" stroke="#D92D20" stroke-width="2.5" stroke-linejoin="round"/>
+              </svg>
+              <div class="fee-cloud-text">
+                <span class="fee-cloud-old">৳2000</span>
+                <span class="fee-cloud-new">৳300</span>
+              </div>
+            </div>
+            <span class="price-suffix">/ person</span>
+          </div>
         </div>
         <div class="pay-badges">
           <span class="pay-badge pay-bkash">bKash</span>
@@ -1007,26 +1067,60 @@
       </div>
 
       <form id="regForm">
-        <p class="section-label">Personal Information</p>
+        <p class="section-label">Payment Confirmation</p>
+        <p class="footnote" style="text-align:left;margin:0 0 16px;">Enter the number you paid from and your Transaction ID first — the rest of the form will unlock automatically.</p>
+
+        <div class="field">
+          <label>Payment Method <span class="opt">(৳300 registration fee)</span></label>
+          <div class="paymethod-options">
+            <label class="paymethod-card pm-bkash selected" id="pmCardBkash">
+              <input type="radio" name="f_paymethod_radio" value="bKash" checked required>
+              <span class="pm-check">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="brand-mark">bKash</span>
+              <span class="pm-label">Personal Send Money</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Number You Paid From</label>
+          <input type="tel" id="f_paynumber" required inputmode="numeric" placeholder="01XXXXXXXXX">
+        </div>
+
+        <div class="field" style="border-bottom:none;">
+          <label>Transaction ID</label>
+          <input type="text" id="f_trxid" required placeholder="e.g. 8N7K3P2Q1R" style="text-transform:uppercase;">
+        </div>
+
+        <div class="lock-hint" id="formLockHint">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Enter a valid number and Transaction ID above to unlock the rest of the form
+        </div>
+
+        <div id="restOfForm" style="display:none;">
+
+        <p class="section-label section-label-spaced">Personal Information</p>
 
         <div class="field">
           <label>Full Name</label>
-          <input type="text" id="f_name" required placeholder="e.g. Karim Uddin">
+          <input type="text" id="f_name" placeholder="e.g. Karim Uddin">
         </div>
 
         <div class="field">
           <label>Phone Number</label>
-          <input type="tel" id="f_phone" required inputmode="numeric" placeholder="01XXXXXXXXX">
+          <input type="tel" id="f_phone" inputmode="numeric" placeholder="01XXXXXXXXX">
         </div>
 
         <div class="field">
           <label>Age</label>
-          <input type="number" id="f_age" min="1" max="120" required placeholder="e.g. 29">
+          <input type="number" id="f_age" min="1" max="120" placeholder="e.g. 29">
         </div>
 
         <div class="field">
           <label>Last Education</label>
-          <select id="f_education" required>
+          <select id="f_education">
             <option value="" disabled selected>Select your last education</option>
             <option value="JSC / SSC">JSC / SSC</option>
             <option value="HSC">HSC</option>
@@ -1039,7 +1133,7 @@
 
         <div class="field">
           <label>Marital Status</label>
-          <select id="f_marital" required>
+          <select id="f_marital">
             <option value="" disabled selected>Select your marital status</option>
             <option value="Single">Single</option>
             <option value="Married">Married</option>
@@ -1070,37 +1164,16 @@
             <option value="Before Noon" id="optBeforeNoon">Before Noon</option>
             <option value="After Noon" id="optAfterNoon">After Noon</option>
           </select>
-          <div class="err" id="slotFullMsg" style="display:none;margin-top:10px;">This time slot is full. Please select the other time slot.</div>
-        </div>
-
-        <p class="section-label section-label-spaced">Payment Confirmation</p>
-
-        <div class="field">
-          <label>Payment Method <span class="opt">(৳300 registration fee)</span></label>
-          <div class="paymethod-options">
-            <label class="paymethod-card pm-bkash selected" id="pmCardBkash">
-              <input type="radio" name="f_paymethod_radio" value="bKash" checked required>
-              <span class="pm-check">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </span>
-              <span class="brand-mark">bKash</span>
-              <span class="pm-label">Personal Send Money</span>
-            </label>
+          <div class="slot-availability">
+            <span class="slot-pill" id="slotPillBefore">Before Noon: checking…</span>
+            <span class="slot-pill" id="slotPillAfter">After Noon: checking…</span>
           </div>
-        </div>
-
-        <div class="field">
-          <label>Number You Paid From</label>
-          <input type="tel" id="f_paynumber" required inputmode="numeric" placeholder="01XXXXXXXXX">
-        </div>
-
-        <div class="field" style="border-bottom:none;">
-          <label>Transaction ID</label>
-          <input type="text" id="f_trxid" required placeholder="e.g. 8N7K3P2Q1R" style="text-transform:uppercase;">
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">Complete Registration</button>
         <div class="err" id="formErr" style="display:none;"></div>
+
+        </div>
       </form>
     </div>
 
@@ -1118,6 +1191,28 @@
 
   // Bangladeshi mobile number: 01[3-9]XXXXXXXX (11 digits), optionally prefixed with +880 / 880 / 0
   const BD_PHONE_REGEX = /^(?:\+?880|0)1[3-9]\d{8}$/;
+
+  // ---------- unlock rest of form once payment details look valid ----------
+  const restOfForm = document.getElementById('restOfForm');
+  const formLockHint = document.getElementById('formLockHint');
+  const paynumberEl = document.getElementById('f_paynumber');
+  const trxidEl = document.getElementById('f_trxid');
+  let formUnlocked = false;
+
+  function checkUnlockForm(){
+    if(formUnlocked) return;
+    const payOk = BD_PHONE_REGEX.test(paynumberEl.value.trim().replace(/[\s-]/g, ''));
+    const trxOk = trxidEl.value.trim().length >= 6;
+    if(payOk && trxOk){
+      formUnlocked = true;
+      restOfForm.style.display = '';
+      if(formLockHint) formLockHint.style.display = 'none';
+    }
+  }
+  if(paynumberEl && trxidEl){
+    paynumberEl.addEventListener('input', checkUnlockForm);
+    trxidEl.addEventListener('input', checkUnlockForm);
+  }
 
   // ---------- consent overlay ----------
   const consentOverlay = document.getElementById('consentOverlay');
@@ -1141,42 +1236,29 @@
   });
 
   // ---------- doc number ----------
-  // Shared, sequential form number starting at 9001. The number shown while
-  // filling the form is a preview of the next available number; the exact
-  // number is finalized (and the shared counter advanced) at submit time.
-  const FORM_NO_KEY = 'eb3-form-counter';
-  const FORM_NO_START = 9001;
-
-  async function peekNextFormNumber(){
+  // Sequential form numbers starting at 9001, shared across every visitor via
+  // storage so each new form shown gets the next number in line.
+  (async function assignFormNo(){
+    const docNoEl = document.getElementById('docNo');
+    const FORM_NO_KEY = 'eb3-next-form-no';
+    const FORM_NO_START = 9001;
     try{
-      const res = await window.storage.get(FORM_NO_KEY, true);
-      const last = res && res.value ? parseInt(res.value, 10) : (FORM_NO_START - 1);
-      return (isNaN(last) ? FORM_NO_START - 1 : last) + 1;
+      let next = FORM_NO_START;
+      try{
+        const res = await window.storage.get(FORM_NO_KEY, true);
+        const n = res && res.value ? parseInt(res.value, 10) : NaN;
+        next = isNaN(n) ? FORM_NO_START : n;
+      }catch(e){
+        // Key doesn't exist yet — this is the first form number issued.
+        next = FORM_NO_START;
+      }
+      docNoEl.textContent = "FORM NO. " + next;
+      window.storage.set(FORM_NO_KEY, String(next + 1), true).catch(()=>{});
     }catch(e){
-      return FORM_NO_START;
+      console.error('Could not assign form number:', e);
+      docNoEl.textContent = "FORM NO. " + FORM_NO_START;
     }
-  }
-
-  // Best-effort sequential assignment (read-then-write, same pattern as the
-  // seat-slot counters below) — advances the shared counter by one and
-  // returns the number this submission should use.
-  async function assignFormNumber(){
-    try{
-      const res = await window.storage.get(FORM_NO_KEY, true);
-      const last = res && res.value ? parseInt(res.value, 10) : (FORM_NO_START - 1);
-      const next = (isNaN(last) ? FORM_NO_START - 1 : last) + 1;
-      await window.storage.set(FORM_NO_KEY, String(next), true);
-      return next;
-    }catch(e){
-      console.error('Could not assign form number (non-blocking):', e);
-      return null;
-    }
-  }
-
-  document.getElementById('docNo').textContent = "FORM NO. " + FORM_NO_START;
-  peekNextFormNumber().then(n=>{
-    document.getElementById('docNo').textContent = "FORM NO. " + n;
-  });
+  })();
   document.getElementById('docDate').textContent = new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
 
   // ---------- marital status: show/hide children field ----------
@@ -1193,10 +1275,7 @@
   });
 
   // ---------- payment method cards (selected highlight) ----------
-  document.getElementById('f_time').addEventListener('change', ()=>{
-    document.getElementById('slotFullMsg').style.display = 'none';
-    refreshSlotAvailability();
-  });
+  document.getElementById('f_time').addEventListener('focus', refreshSlotAvailability);
   const pmCards = document.querySelectorAll('.paymethod-card');
   pmCards.forEach(card=>{
     const radio = card.querySelector('input[type="radio"]');
@@ -1281,21 +1360,43 @@
     }
   }
 
-  // Silently checks slot fullness without ever showing seat counts or which
-  // specific slot is full to the visitor — used only to gate selection.
   async function refreshSlotAvailability(){
-    const timeSelect = document.getElementById('f_time');
-    const slotMsg = document.getElementById('slotFullMsg');
+    const pillBefore = document.getElementById('slotPillBefore');
+    const pillAfter = document.getElementById('slotPillAfter');
+    const optBefore = document.getElementById('optBeforeNoon');
+    const optAfter = document.getElementById('optAfterNoon');
     try{
-      const value = timeSelect.value;
-      if(!value) return;
-      const hasRoom = await slotHasRoom(value);
-      if(!hasRoom){
+      const [beforeCount, afterCount] = await Promise.all([getSlotCount('Before Noon'), getSlotCount('After Noon')]);
+
+      const beforeFull = beforeCount >= SLOT_CAPACITY;
+      const afterFull = afterCount >= SLOT_CAPACITY;
+
+      // Seat counts are intentionally not shown to visitors — only whether a
+      // slot is still open or has filled up.
+      pillBefore.innerHTML = beforeFull
+        ? 'Before Noon: <span class="slot-count-num">FULL — please book the other slot</span>'
+        : 'Before Noon: <span class="slot-count-num">Open</span>';
+      pillBefore.classList.toggle('slot-full', beforeFull);
+
+      pillAfter.innerHTML = afterFull
+        ? 'After Noon: <span class="slot-count-num">FULL — please book the other slot</span>'
+        : 'After Noon: <span class="slot-count-num">Open</span>';
+      pillAfter.classList.toggle('slot-full', afterFull);
+
+      optBefore.disabled = beforeFull;
+      optBefore.textContent = beforeFull ? 'Before Noon (Full — choose another slot)' : 'Before Noon';
+      optAfter.disabled = afterFull;
+      optAfter.textContent = afterFull ? 'After Noon (Full — choose another slot)' : 'After Noon';
+
+      // If the currently-selected slot just became full (e.g. after a refresh), clear it.
+      const timeSelect = document.getElementById('f_time');
+      if((timeSelect.value === 'Before Noon' && beforeFull) || (timeSelect.value === 'After Noon' && afterFull)){
         timeSelect.value = '';
-        slotMsg.style.display = 'block';
       }
     }catch(e){
-      console.error('Could not check slot availability:', e);
+      console.error('Could not load slot availability:', e);
+      pillBefore.textContent = 'Before Noon';
+      pillAfter.textContent = 'After Noon';
     }
   }
 
@@ -1378,17 +1479,13 @@
     }
     if(!hasRoom){
       await refreshSlotAvailability();
-      errBox.textContent = "Sorry, the " + data.time + " slot just filled up (550/550). Please select the other time slot and submit again.";
+      errBox.textContent = "Sorry, the " + data.time + " slot just filled up. Please select the other time slot and submit again.";
       errBox.style.display = 'block';
       btn.disabled = false; btn.textContent = "Complete Registration";
       return;
     }
 
     btn.disabled = true; btn.textContent = "Saving...";
-
-    // Finalize this submission's sequential form number (advances the shared
-    // counter so the next visitor's form shows the next number).
-    data.formNo = await assignFormNumber();
 
     // Save to the Google Sheet — this is the permanent master database.
     // mode:'no-cors' means we can't read the response, so success here just means
@@ -1434,14 +1531,13 @@
         <h3>Thanks for registering, ${data.name}!</h3>
         <p>We're so glad you're joining us. Your seat is confirmed and we truly can't wait to see you there — get ready to learn everything about the EB-3 visa journey, ask your questions, and connect with our advisors in person.</p>
         <div class="success-details">
-          <div class="success-detail-row"><span>Form No</span><b>${data.formNo || '—'}</b></div>
           <div class="success-detail-row"><span>Last Education</span><b>${data.education}</b></div>
           <div class="success-detail-row"><span>Marital Status</span><b>${data.marital}${data.marital === 'Married' && data.children ? ' · ' + data.children + ' child(ren)' : ''}</b></div>
           <div class="success-detail-row"><span>Attendance Time</span><b>${data.time}</b></div>
           <div class="success-detail-row"><span>Payment</span><b>${data.paymethod} · ${data.trxid}</b></div>
         </div>
         <div class="venue-recap">
-          📍 <b>Venue:</b> Noa Convention Hall, GCCE, Majdai, Noakhali
+          📍 <b>Venue:</b> Noakhali Convention Hall, GCCE, Majdai, Noakhali
         </div>
         <p class="success-signoff">See you soon at our program — team Edu Abroad Limited 💙</p>
         <p class="success-signoff" style="margin-top:8px;font-style:normal;font-weight:600;color:var(--navy);">📞 Our team will call you very soon to confirm your registration.</p>
@@ -1514,7 +1610,6 @@
 
     let y = 172;
     const rows = [
-      ['Form No', data.formNo ? String(data.formNo) : '—'],
       ['Name', data.name],
       ['Phone', data.phone],
       ['Age', String(data.age)],
@@ -1556,7 +1651,7 @@
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...navy);
     doc.setFontSize(9.5);
-    doc.text('📍 Venue: Noa Convention Hall, GCCE, Majdai, Noakhali', 32, y + 18);
+    doc.text('📍 Venue: Noakhali Convention Hall, GCCE, Majdai, Noakhali', 32, y + 18);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...inkSoft);
     doc.text('Please arrive 15 minutes before your slot.', 32, y + 33);
