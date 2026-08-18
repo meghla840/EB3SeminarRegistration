@@ -202,8 +202,7 @@
     letter-spacing:.04em;
     text-transform:uppercase;
     color:var(--accent);
-    background:var(--accent-50);
-    border:1px solid var(--accent-100);
+    background:none;
     padding:8px 16px;
     border-radius:999px;
     margin-bottom:18px;
@@ -289,10 +288,10 @@
     font-family:'Poppins','Noto Sans Bengali',sans-serif;
     font-weight:600;
     font-style:italic;
-    font-size:24px;
+    font-size:25px;
     color:var(--accent-600);
-    background:var(--accent-50);
-    border:1px dashed var(--accent-100);
+   
+    
     border-radius:12px;
     padding:11px 16px;
     margin:0 0 12px;
@@ -359,7 +358,7 @@
   }
   #eb3-root .fee-cloud-badge{
     position:relative;
-    width:78px;
+    width:104px;
     flex:0 0 auto;
   }
   #eb3-root .fee-cloud-badge svg{width:100%;height:auto;display:block;}
@@ -377,15 +376,16 @@
     padding-top:3px;
   }
   #eb3-root .fee-cloud-old{
-    font-size:11.5px;
-    color:#98A2B3;
+    font-size:13px;
+    font-weight:800;
+    color:rgba(255,255,255,.65);
     text-decoration:line-through;
-    text-decoration-color:#D92D20;
+    text-decoration-color:rgba(255,255,255,.65);
     text-decoration-thickness:2px;
   }
   #eb3-root .fee-cloud-new{
-    font-size:16px;
-    color:var(--accent-600);
+    font-size:19px;
+    color:#FFD400;
   }
   #eb3-root .payment-amount span.price-suffix{
     font-family:'Inter','Noto Sans Bengali',sans-serif;
@@ -409,6 +409,9 @@
     border-radius:12px;
     padding:13px 14px;
     margin-bottom:14px;
+  }
+  #eb3-root .payment-number-row .fee-cloud-badge{
+    margin-left:auto;
   }
   #eb3-root .payment-number-icon{
     width:36px;height:36px;border-radius:9px;
@@ -748,7 +751,7 @@
 
     #eb3-root .hero{padding:30px 16px 6px;}
     #eb3-root .hero-banner-img{max-height:180px;}
-    #eb3-root .venue-pickup-line{font-size:20px;padding:10px 14px;}
+    #eb3-root .venue-pickup-line{font-size:14px;padding:10px 14px;}
 
     #eb3-root .field input,
     #eb3-root .field select,
@@ -782,6 +785,29 @@
     #eb3-root .footnote{padding-left:12px;padding-right:12px;}
   }
 
+  /* ---------- desktop / larger screens ----------
+     Mobile styles above are untouched. These rules only kick in at
+     768px+ so the mobile layout stays exactly as it was. */
+  @media(min-width:768px){
+    #eb3-root .site-header-inner{max-width:760px;}
+    #eb3-root .logo-img{height:90px;}
+    #eb3-root .header-badge{font-size:20px;font-weight:800;padding:14px 28px;}
+
+    #eb3-root .hero{max-width:760px;margin:0 auto;padding:56px 24px 14px;}
+    #eb3-root .hero-pill{font-size:34px;font-weight:800;padding:14px 30px;margin-bottom:22px;border-radius:16px;}
+    #eb3-root .hero h1{font-size:46px;}
+    #eb3-root .hero p{font-size:18.5px;max-width:580px;}
+
+    #eb3-root .video-label{display:none;}
+
+    #eb3-root .venue{max-width:760px;margin:30px auto 0;padding-left:0;padding-right:0;}
+    #eb3-root .video-section{max-width:760px;margin:30px auto 0;padding-left:0;padding-right:0;}
+
+    #eb3-root .wrap{max-width:760px;margin:0 auto;padding:30px 0 64px;}
+    #eb3-root .card{border-radius:24px;}
+    #eb3-root form{padding:38px 40px 40px;}
+  }
+
   /* ---------- entrance animations ---------- */
   @keyframes eb3FadeUp{
     from{opacity:0;transform:translateY(16px);}
@@ -807,10 +833,7 @@
     60%{transform:scale(1.08);opacity:1;}
     100%{transform:scale(1);opacity:1;}
   }
-  @keyframes eb3Pulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(47,111,237,0.35);}
-    50%{box-shadow:0 0 0 7px rgba(47,111,237,0);}
-  }
+ 
   @keyframes eb3Spin{
     to{transform:rotate(360deg);}
   }
@@ -970,7 +993,7 @@
   </div>
 
   <div class="video-section">
-    <p class="video-label">🎥 Learn About the EB-3 Visa</p>
+   
     <div class="video-embed-wrap">
       <iframe src="https://www.youtube-nocookie.com/embed/mbb62TCjZVE" title="Venue Overview Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
@@ -1010,19 +1033,7 @@
       <div class="payment-head">
         <div>
           <p class="venue-label" style="color:var(--accent-600);">Registration Fee</p>
-          <div class="payment-amount-row">
-            <div class="fee-cloud-badge" aria-hidden="true">
-              <svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22,58 Q8,58 8,46 Q8,35 19,33 Q18,21 32,18 Q38,7 52,10 Q65,4 76,15 Q90,14 92,28 Q100,31 97,44 Q99,56 86,58 Q84,68 71,68 L29,68 Q22,68 22,58 Z"
-                  fill="#FFFDF7" stroke="#D92D20" stroke-width="2.5" stroke-linejoin="round"/>
-              </svg>
-              <div class="fee-cloud-text">
-                <span class="fee-cloud-old">৳2000</span>
-                <span class="fee-cloud-new">৳300</span>
-              </div>
-            </div>
-            <span class="price-suffix">/ person</span>
-          </div>
+          <p class="payment-amount">৳300 <span class="price-suffix">/ person</span></p>
         </div>
         <div class="pay-badges">
           <span class="pay-badge pay-bkash">bKash</span>
@@ -1035,6 +1046,16 @@
         <div>
           <p class="venue-label">Send Money to (Personal)</p>
           <p class="payment-number">01706583458</p>
+        </div>
+        <div class="fee-cloud-badge" aria-hidden="true">
+          <svg viewBox="0 0 100 84" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22,58 Q8,58 8,46 Q8,35 19,33 Q18,21 32,18 Q38,7 52,10 Q65,4 76,15 Q90,14 92,28 Q100,31 97,44 Q99,56 86,58 Q84,68 71,68 L29,68 Q22,68 22,58 Z"
+              fill="#E2136E" stroke="#B00E58" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div class="fee-cloud-text">
+            <span class="fee-cloud-old">৳2000</span>
+            <span class="fee-cloud-new">৳300</span>
+          </div>
         </div>
       </div>
       <ol class="payment-steps">
